@@ -12,6 +12,10 @@ class CoursesPage extends Component {
     this.setState({ course });
   };
 
+  handleSubmit() {
+    alert(this.state.course.title);
+  }
+
   render() {
     return (
       <form>
