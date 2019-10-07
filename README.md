@@ -1,2 +1,3 @@
-# A grocery list, with React
-# my-grocery-list
+# A grocery list, with React & Redux
+
+WIP
