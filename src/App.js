@@ -1,10 +1,10 @@
 import React from "react";
-import CoursesPage from "./components/CoursesPage";
+import GroceryContainer from "./containers/GroceryContainer";
 
 function App() {
   return (
     <div>
-      <CoursesPage />
+      <GroceryContainer />
     </div>
   );
 }

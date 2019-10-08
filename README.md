@@ -1,6 +1,6 @@
 # A grocery list, with React & Redux
 
-App created based of the experiment / reading of several tutorials:
+App created based on the experiment / reading of several tutorials:
 
 - https://redux.js.org/basics/example
 - Pluralsight : Redux Flow (Cory House: Create a simple Add Course Form)
