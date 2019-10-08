@@ -2,21 +2,27 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import GroceryItem from "./GroceryItem";
 
-const MarginLeft = styled.span`
-  margin-left: 10px;
-`;
-
-const RowLeft = styled.div`
+const Row = styled.div`
   display: flex;
   justify-content: flex-start;
-  padding-top: 0.5em;
 `;
 
 const Box = styled.div`
   margin: 10px;
+`;
+
+const InputText = styled.input.attrs({
+  type: "text"
+})`
+  border-radius: 5px;
+  border: 1px solid black;
   padding: 10px;
-  padding-bottom: 20px;
-  background-color: lightblue;
+`;
+
+const InputSubmit = styled(InputText).attrs({
+  type: "submit"
+})`
+  margin-left: 10px;
 `;
 
 class GroceryForm extends Component {
@@ -29,14 +35,12 @@ class GroceryForm extends Component {
       courseTitle
     } = this.props;
     return (
-      <RowLeft>
+      <Row>
         <Box>
           <form onSubmit={handleSubmit}>
             <h2>My Grocery List</h2>
-            <input type="text" onChange={handleChange} value={courseTitle} />
-            <MarginLeft>
-              <input type="submit" value="Save" />
-            </MarginLeft>
+            <InputText onChange={handleChange} value={courseTitle} />
+            <InputSubmit type="submit" value="Save" />
           </form>
           <div>
             {courses.map((course, index) => {
@@ -51,7 +55,7 @@ class GroceryForm extends Component {
             })}
           </div>
         </Box>
-      </RowLeft>
+      </Row>
     );
   }
 }

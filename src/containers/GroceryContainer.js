@@ -38,8 +38,6 @@ class GroceryContainer extends Component {
 
   render() {
     const { courses } = this.props;
-    console.log("courses", courses);
-    console.log("state", this.state);
     return (
       <GroceryForm
         handleChange={this.handleChange}
