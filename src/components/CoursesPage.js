@@ -24,6 +24,7 @@ const Box = styled.div`
 class CoursesPage extends Component {
   state = {
     course: {
+      id: 0,
       title: ""
     }
   };
@@ -33,11 +34,17 @@ class CoursesPage extends Component {
     this.setState({ course });
   };
 
+  //   handleDelete(e, index) {
+  //     e.preventDefault();
+  //     this.props.dispatch(courseActions.deleteCourse(index));
+  //   }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.dispatch(courseActions.createCourse(this.state.course));
     this.setState({
       course: {
+        id: new Date(),
         title: ""
       }
     });
@@ -58,8 +65,19 @@ class CoursesPage extends Component {
               <input type="submit" value="Save" />
             </MarginLeft>
           </form>
-          {this.props.courses.map(course => (
-            <RowLeft key={course.title}>{course.title}</RowLeft>
+          {this.props.courses.map((index, course) => (
+            <div>
+              <RowLeft key={course.id}>{course.title}</RowLeft>
+              <button
+                onClick={() =>
+                  this.props.dispatch(
+                    courseActions.deleteCourse(this.state.course.id)
+                  )
+                }
+              >
+                Remove
+              </button>
+            </div>
           ))}
         </Box>
       </RowLeft>
