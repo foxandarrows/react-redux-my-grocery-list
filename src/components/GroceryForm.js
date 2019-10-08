@@ -21,20 +21,33 @@ const Box = styled.div`
 
 class GroceryForm extends Component {
   render() {
-    const { handleSubmit, handleChange, courses } = this.props;
+    const {
+      handleSubmit,
+      handleChange,
+      // handleDelete,
+      courses,
+      courseTitle
+    } = this.props;
     return (
       <RowLeft>
         <Box>
           <form onSubmit={handleSubmit}>
             <h2>My Grocery List</h2>
-            <input type="text" onChange={handleChange} />
+            <input type="text" onChange={handleChange} value={courseTitle} />
             <MarginLeft>
               <input type="submit" value="Save" />
             </MarginLeft>
           </form>
           <div>
             {courses.map((course, index) => {
-              return <GroceryItem key={index} title={course.title} />;
+              return (
+                <GroceryItem
+                  key={index}
+                  title={course.title}
+                  id={course.id}
+                  // handleDelete={handleDelete}
+                />
+              );
             })}
           </div>
         </Box>

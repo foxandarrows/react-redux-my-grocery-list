@@ -5,22 +5,25 @@ import PropTypes from "prop-types";
 import GroceryForm from "../components/GroceryForm";
 
 class GroceryContainer extends Component {
-  state = {
-    course: {
-      id: 0,
-      title: ""
-    }
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      course: {
+        id: 0,
+        title: ""
+      }
+    };
+  }
 
   handleChange = e => {
     const course = { ...this.state.course, title: e.target.value };
     this.setState({ course });
   };
 
-  //   handleDelete(e, index) {
-  //     e.preventDefault();
-  //     this.props.dispatch(courseActions.deleteCourse(index));
-  //   }
+  // handleDelete(e, index) {
+  //   e.preventDefault();
+  //   this.props.dispatch(courseActions.deleteCourse(this.props.courses.id));
+  // }
 
   handleSubmit = e => {
     e.preventDefault();
@@ -35,11 +38,15 @@ class GroceryContainer extends Component {
 
   render() {
     const { courses } = this.props;
+    console.log("courses", courses);
+    console.log("state", this.state);
     return (
       <GroceryForm
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        // handleDelete={this.handleDelete}
         courses={courses}
+        courseTitle={this.state.course.title}
       />
     );
   }

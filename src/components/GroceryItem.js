@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import * as courseActions from "../redux/actions/courseActions";
 
 const RowLeft = styled.div`
   display: flex;
@@ -9,14 +11,16 @@ const RowLeft = styled.div`
 
 class GroceryItem extends Component {
   render() {
-    const { title } = this.props;
+    const { id, title, dispatch } = this.props;
     return (
       <RowLeft>
         <span>{title}</span>
-        {/* <button onClick={console.log(index)}>Remove</button> */}
+        <button onClick={() => dispatch(courseActions.deleteCourse(id))}>
+          Delete
+        </button>
       </RowLeft>
     );
   }
 }
 
-export default GroceryItem;
+export default connect()(GroceryItem);
