@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import GroceryItem from "./GroceryItem";
 
+// Make a common file for this styled-component
 const Row = styled.div`
   display: flex;
   justify-content: flex-start;
 `;
 
-const Box = styled.div`
+const GroceryCard = styled.div`
   margin: 10px;
 `;
 
@@ -36,7 +37,7 @@ class GroceryForm extends Component {
     } = this.props;
     return (
       <Row>
-        <Box>
+        <GroceryCard>
           <form onSubmit={handleSubmit}>
             <h2>My Grocery List</h2>
             <InputText onChange={handleChange} value={courseTitle} />
@@ -54,7 +55,7 @@ class GroceryForm extends Component {
               );
             })}
           </div>
-        </Box>
+        </GroceryCard>
       </Row>
     );
   }
