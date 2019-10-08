@@ -44,7 +44,7 @@ class CoursesPage extends Component {
     this.props.dispatch(courseActions.createCourse(this.state.course));
     this.setState({
       course: {
-        id: new Date(),
+        id: this.state.course.id + 1,
         title: ""
       }
     });
