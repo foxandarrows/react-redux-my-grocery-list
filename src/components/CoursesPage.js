@@ -17,7 +17,7 @@ const RowLeft = styled.div`
 const Box = styled.div`
   margin: 10px;
   padding: 10px;
-  padding-bottom: 35px;
+  padding-bottom: 20px;
   background-color: lightblue;
 `;
 
@@ -35,8 +35,12 @@ class CoursesPage extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    debugger;
     this.props.dispatch(courseActions.createCourse(this.state.course));
+    this.setState({
+      course: {
+        title: ""
+      }
+    });
   };
 
   render() {
@@ -69,7 +73,6 @@ CoursesPage.propTypes = {
 };
 
 function mapStateToProps(state) {
-  debugger;
   return {
     courses: state.courses
   };
