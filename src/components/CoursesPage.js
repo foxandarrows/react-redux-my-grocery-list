@@ -2,6 +2,24 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as courseActions from "../redux/actions/courseActions";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const MarginLeft = styled.span`
+  margin-left: 10px;
+`;
+
+const RowLeft = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 0.5em;
+`;
+
+const Box = styled.div`
+  margin: 10px;
+  padding: 10px;
+  padding-bottom: 35px;
+  background-color: lightblue;
+`;
 
 class CoursesPage extends Component {
   state = {
@@ -23,19 +41,24 @@ class CoursesPage extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Courses</h2>
-        <h3>Add course</h3>
-        <input
-          type="text"
-          onChange={this.handleChange}
-          value={this.state.course.title}
-        />
-        <input type="submit" value="Add" />
-        {this.props.courses.map(course => (
-          <div key={course.title}>{course.title}</div>
-        ))}
-      </form>
+      <RowLeft>
+        <Box>
+          <form onSubmit={this.handleSubmit}>
+            <h2>My Grocery List</h2>
+            <input
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.course.title}
+            />
+            <MarginLeft>
+              <input type="submit" value="Save" />
+            </MarginLeft>
+          </form>
+          {this.props.courses.map(course => (
+            <RowLeft key={course.title}>{course.title}</RowLeft>
+          ))}
+        </Box>
+      </RowLeft>
     );
   }
 }
