@@ -10,10 +10,16 @@ const Row = styled.div`
   align-items: center;
 `;
 
-const ColumnHalf = styled.div`
+const ColumnOneQuarter = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 25%;
+`;
+
+const ColumnThreeQuarters = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 75%;
 `;
 
 const ItemCard = styled.div`
@@ -25,8 +31,13 @@ const ItemCard = styled.div`
 
 const ButtonDelete = styled.button`
   border-radius: 5px;
-  border: 1px solid black;
+  border: 1px solid grey;
   padding: 10px;
+`;
+
+const Icon = styled.span`
+  font-size: 18px;
+  color: grey;
 `;
 
 class GroceryItem extends Component {
@@ -35,16 +46,16 @@ class GroceryItem extends Component {
     return (
       <ItemCard>
         <Row>
-          <ColumnHalf>
+          <ColumnThreeQuarters>
             <span>{title}</span>
-          </ColumnHalf>
-          <ColumnHalf>
+          </ColumnThreeQuarters>
+          <ColumnOneQuarter>
             <ButtonDelete
               onClick={() => dispatch(courseActions.deleteCourse(id))}
             >
-              Delete
+              <Icon className="material-icons">delete</Icon>
             </ButtonDelete>
-          </ColumnHalf>
+          </ColumnOneQuarter>
         </Row>
       </ItemCard>
     );
