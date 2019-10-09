@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import * as courseActions from "../redux/actions/courseActions";
 
-// Make a common file for this styled-component
+// *** Make a common file for these styled-components
 const Row = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -22,6 +22,8 @@ const ColumnThreeQuarters = styled.div`
   width: 75%;
 `;
 
+// ***
+
 const ItemCard = styled.div`
   border-bottom: 1px solid black;
   margin-top: 2px;
@@ -32,10 +34,11 @@ const ItemCard = styled.div`
 const ButtonDelete = styled.button`
   border-radius: 5px;
   border: 1px solid grey;
-  padding: 10px;
+  padding: 7px;
 `;
 
-const Icon = styled.span`
+/** Make a reusable component for these components */
+const IconDelete = styled.span`
   font-size: 18px;
   color: grey;
 `;
@@ -53,7 +56,7 @@ class GroceryItem extends Component {
             <ButtonDelete
               onClick={() => dispatch(courseActions.deleteCourse(id))}
             >
-              <Icon className="material-icons">delete</Icon>
+              <IconDelete className="material-icons">delete</IconDelete>
             </ButtonDelete>
           </ColumnOneQuarter>
         </Row>
