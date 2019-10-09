@@ -1,5 +1,7 @@
 # A grocery list, with React & Redux
 
+For now : Create, Read and Delete (WIP)
+
 This is NOT a copy - paste tutorial, this is an app created based on the experiment / reading of several tutorials:
 
 - https://redux.js.org/basics/example
