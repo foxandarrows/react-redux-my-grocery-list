@@ -1,7 +1,5 @@
 # A grocery list, with React & Redux
 
-[Demo](https://foxandarrows.github.io/my-grocery-list/)
-
 This is NOT a copy - paste tutorial, this is an app created based on the experiment / reading of several tutorials:
 
 - https://redux.js.org/basics/example
