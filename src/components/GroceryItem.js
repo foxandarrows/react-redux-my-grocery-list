@@ -7,6 +7,7 @@ import * as courseActions from "../redux/actions/courseActions";
 const Row = styled.div`
   display: flex;
   justify-content: flex-start;
+  align-items: center;
 `;
 
 const ColumnHalf = styled.div`
@@ -15,18 +16,18 @@ const ColumnHalf = styled.div`
   width: 50%;
 `;
 
-const RowRight = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
-
 const ItemCard = styled.div`
   border-bottom: 1px solid black;
   margin-top: 2px;
   padding: 10px;
+  padding-right: 0px;
 `;
 
-const ButtonDelete = styled.button``;
+const ButtonDelete = styled.button`
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 10px;
+`;
 
 class GroceryItem extends Component {
   render() {

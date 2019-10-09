@@ -26,6 +26,10 @@ const InputSubmit = styled(InputText).attrs({
   margin-left: 10px;
 `;
 
+const MarginBottom = styled.div`
+  margin-bottom: 20px;
+`;
+
 class GroceryForm extends Component {
   render() {
     const {
@@ -40,8 +44,10 @@ class GroceryForm extends Component {
         <GroceryCard>
           <form onSubmit={handleSubmit}>
             <h2>My Grocery List</h2>
-            <InputText onChange={handleChange} value={courseTitle} />
-            <InputSubmit type="submit" value="Save" />
+            <MarginBottom>
+              <InputText onChange={handleChange} value={courseTitle} />
+              <InputSubmit type="submit" value="Add" />
+            </MarginBottom>
           </form>
           <div>
             {courses.map((course, index) => {
