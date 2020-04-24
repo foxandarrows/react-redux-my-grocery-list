@@ -1,18 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import GroceryItem from "./GroceryItem";
 
 // Make a common file for this styled-component
-const Row = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const GroceryCard = styled.div`
-  margin: 10px;
-`;
-
 const InputText = styled.input.attrs({
   type: "text"
 })`
@@ -42,39 +31,17 @@ const IconAdd = styled.span`
 
 class GroceryForm extends Component {
   render() {
-    const {
-      handleSubmit,
-      handleChange,
-      // handleDelete,
-      courses,
-      courseTitle
-    } = this.props;
+    const { handleSubmit, handleChange, courseTitle } = this.props;
     return (
-      <Row>
-        <GroceryCard>
-          <form onSubmit={handleSubmit}>
-            <h2>My Grocery List</h2>
-            <RowMarginBottom>
-              <InputText onChange={handleChange} value={courseTitle} />
-              <ButtonSubmit type="submit">
-                <IconAdd className="material-icons">add</IconAdd>
-              </ButtonSubmit>
-            </RowMarginBottom>
-          </form>
-          <div>
-            {courses.map((course, index) => {
-              return (
-                <GroceryItem
-                  key={index}
-                  title={course.title}
-                  id={course.id}
-                  // handleDelete={handleDelete}
-                />
-              );
-            })}
-          </div>
-        </GroceryCard>
-      </Row>
+      <form onSubmit={handleSubmit}>
+        <h2>My Grocery List</h2>
+        <RowMarginBottom>
+          <InputText onChange={handleChange} value={courseTitle} />
+          <ButtonSubmit type="submit">
+            <IconAdd className="material-icons">add</IconAdd>
+          </ButtonSubmit>
+        </RowMarginBottom>
+      </form>
     );
   }
 }
