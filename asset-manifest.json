@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/react-redux-my-grocery-list/static/js/main.558d1b51.chunk.js",
-    "main.js.map": "/react-redux-my-grocery-list/static/js/main.558d1b51.chunk.js.map",
-    "runtime-main.js": "/react-redux-my-grocery-list/static/js/runtime-main.6acc5554.js",
-    "runtime-main.js.map": "/react-redux-my-grocery-list/static/js/runtime-main.6acc5554.js.map",
-    "static/js/2.943f0a28.chunk.js": "/react-redux-my-grocery-list/static/js/2.943f0a28.chunk.js",
-    "static/js/2.943f0a28.chunk.js.map": "/react-redux-my-grocery-list/static/js/2.943f0a28.chunk.js.map",
+    "main.js": "/react-redux-my-grocery-list/static/js/main.a5462f1f.chunk.js",
+    "main.js.map": "/react-redux-my-grocery-list/static/js/main.a5462f1f.chunk.js.map",
+    "runtime-main.js": "/react-redux-my-grocery-list/static/js/runtime-main.53004669.js",
+    "runtime-main.js.map": "/react-redux-my-grocery-list/static/js/runtime-main.53004669.js.map",
+    "static/js/2.6b1dca36.chunk.js": "/react-redux-my-grocery-list/static/js/2.6b1dca36.chunk.js",
+    "static/js/2.6b1dca36.chunk.js.map": "/react-redux-my-grocery-list/static/js/2.6b1dca36.chunk.js.map",
     "index.html": "/react-redux-my-grocery-list/index.html",
-    "precache-manifest.81652d280dda3dee4ea42a08ab8deadb.js": "/react-redux-my-grocery-list/precache-manifest.81652d280dda3dee4ea42a08ab8deadb.js",
+    "precache-manifest.5f6c62a08d0a76f133d33f885751ad12.js": "/react-redux-my-grocery-list/precache-manifest.5f6c62a08d0a76f133d33f885751ad12.js",
     "service-worker.js": "/react-redux-my-grocery-list/service-worker.js"
   },
   "entrypoints": [
-    "static/js/runtime-main.6acc5554.js",
-    "static/js/2.943f0a28.chunk.js",
-    "static/js/main.558d1b51.chunk.js"
+    "static/js/runtime-main.53004669.js",
+    "static/js/2.6b1dca36.chunk.js",
+    "static/js/main.a5462f1f.chunk.js"
   ]
 }
