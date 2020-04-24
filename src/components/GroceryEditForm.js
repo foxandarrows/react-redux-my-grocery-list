@@ -10,13 +10,12 @@ const InputText = styled.input.attrs({
   padding: 10px;
 `;
 
-const RowMarginBottom = styled.div`
+const Row = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 `;
 
-const ButtonSubmit = styled.button`
+const Button = styled.button`
   margin-left: 10px;
   background-color: white;
   border-radius: 5px;
@@ -29,21 +28,20 @@ const IconAdd = styled.span`
   color: black;
 `;
 
-class GroceryForm extends Component {
+class GroceryEditForm extends Component {
     render() {
-        const { handleSubmit, handleChange, courseTitle } = this.props;
+        const { handleEdit, handleChange, courseTitle } = this.props;
         return (
-            <form onSubmit={handleSubmit}>
-                <h2>My Grocery List</h2>
-                <RowMarginBottom>
+            <form onSubmit={handleEdit}>
+                <Row>
                     <InputText onChange={handleChange} value={courseTitle} />
-                    <ButtonSubmit type="submit">
-                        <IconAdd className="material-icons">add</IconAdd>
-                    </ButtonSubmit>
-                </RowMarginBottom>
+                    <Button type="submit">
+                        <IconAdd className="material-icons">save</IconAdd>
+                    </Button>
+                </Row>
             </form>
         );
     }
 }
 
-export default GroceryForm;
+export default GroceryEditForm;

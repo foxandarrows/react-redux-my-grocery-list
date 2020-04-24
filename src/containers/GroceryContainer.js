@@ -4,6 +4,7 @@ import * as courseActions from "../redux/actions/courseActions";
 import PropTypes from "prop-types";
 import GroceryForm from "../components/GroceryForm";
 import GroceryItem from "../components/GroceryItem";
+import GroceryEditForm from "../components/GroceryEditForm";
 import styled from "styled-components";
 
 const Row = styled.div`
@@ -22,7 +23,8 @@ class GroceryContainer extends Component {
     this.state = {
       course: {
         id: 0,
-        title: ""
+        title: "",
+        editing: false,
       }
     };
   }
@@ -32,6 +34,10 @@ class GroceryContainer extends Component {
     this.setState({ course });
   };
 
+  handleEditChange = () => {
+    console.log("handleEditChange")
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     if (this.state.course.title !== "") {
@@ -39,11 +45,16 @@ class GroceryContainer extends Component {
       this.setState({
         course: {
           id: this.state.course.id + 1,
-          title: ""
+          // How to transform it into a dynamic id, where there will be no "hole" when an id will be deleted ?
+          title: "",
         }
       });
     }
   };
+
+  handleEdit = e => {
+    console.log("handleEdit")
+  }
 
   render() {
     const { courses } = this.props;
@@ -53,14 +64,13 @@ class GroceryContainer extends Component {
           <GroceryForm
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
-            courses={courses}
             courseTitle={this.state.course.title}
           />
-          {courses.map((course, index) => {
-            return (
-              <GroceryItem key={index} title={course.title} id={course.id} />
-            );
-          })}
+          {courses.map((course, index) => (
+              course.editing
+                  ? <GroceryEditForm key={index} id={course.id} title={course.title} editing={course.editing} handleChange={this.handleEditChange} /> // Form to update
+                  : <GroceryItem key={index} id={course.id} title={course.title} />
+              ))}
         </GroceryCard>
       </Row>
     );

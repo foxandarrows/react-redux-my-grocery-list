@@ -6,20 +6,11 @@ import * as courseActions from "../redux/actions/courseActions";
 // *** Make a common file for these styled-components
 const Row = styled.div`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
 `;
 
-const ColumnOneQuarter = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-`;
-
-const ColumnThreeQuarters = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 75%;
+const Half = styled.div`
+  width: 50%;
 `;
 
 // ***
@@ -31,34 +22,40 @@ const ItemCard = styled.div`
   padding-right: 0px;
 `;
 
-const ButtonDelete = styled.button`
+const Button = styled.button`
   border-radius: 5px;
   border: 1px solid grey;
   padding: 7px;
+  margin-left: 5px;
 `;
 
 /** Make a reusable component for these components */
-const IconDelete = styled.span`
+const Icon = styled.span`
   font-size: 18px;
   color: grey;
 `;
 
 class GroceryItem extends Component {
   render() {
-    const { id, title, dispatch } = this.props;
+    const { id, title, editing, dispatch } = this.props;
     return (
       <ItemCard>
         <Row>
-          <ColumnThreeQuarters>
+          <Half>
             <span>{title}</span>
-          </ColumnThreeQuarters>
-          <ColumnOneQuarter>
-            <ButtonDelete
+          </Half>
+          <Half>
+            <Button
               onClick={() => dispatch(courseActions.deleteCourse(id))}
             >
-              <IconDelete className="material-icons">delete</IconDelete>
-            </ButtonDelete>
-          </ColumnOneQuarter>
+              <Icon className="material-icons">delete</Icon>
+            </Button>
+            <Button
+                onClick={() => dispatch(courseActions.updateCourse(id, title))}
+            >
+              <Icon className="material-icons">create</Icon>
+            </Button>
+          </Half>
         </Row>
       </ItemCard>
     );
