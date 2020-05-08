@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import * as courseActions from "../redux/actions/courseActions";
 
 // Make a common file for this styled-component
 const InputText = styled.input.attrs({
@@ -23,20 +24,20 @@ const Button = styled.button`
   padding: 7px;
 `;
 
-const IconAdd = styled.span`
+const Icon = styled.span`
   font-size: 18px;
   color: black;
 `;
 
 class GroceryEditForm extends Component {
     render() {
-        const { handleEdit, handleChange, courseTitle } = this.props;
+        const { handleEditSubmit, handleChange, courseTitle } = this.props;
         return (
-            <form onSubmit={handleEdit}>
+            <form onSubmit={handleEditSubmit}>
                 <Row>
                     <InputText onChange={handleChange} value={courseTitle} />
                     <Button type="submit">
-                        <IconAdd className="material-icons">save</IconAdd>
+                        <Icon className="material-icons">save</Icon>
                     </Button>
                 </Row>
             </form>

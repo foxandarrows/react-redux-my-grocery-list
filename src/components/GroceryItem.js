@@ -37,7 +37,7 @@ const Icon = styled.span`
 
 class GroceryItem extends Component {
   render() {
-    const { id, title, editing, dispatch } = this.props;
+    const { dispatch, id, title, editing } = this.props;
     return (
       <ItemCard>
         <Row>
@@ -51,9 +51,9 @@ class GroceryItem extends Component {
               <Icon className="material-icons">delete</Icon>
             </Button>
             <Button
-                onClick={() => dispatch(courseActions.updateCourse(id, title))}
+                onClick={() => dispatch(courseActions.editCourse(id, editing))}
             >
-              <Icon className="material-icons">create</Icon>
+              <Icon className="material-icons">edit</Icon>
             </Button>
           </Half>
         </Row>

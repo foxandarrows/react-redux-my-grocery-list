@@ -24,7 +24,7 @@ const ButtonSubmit = styled.button`
   padding: 7px;
 `;
 
-const IconAdd = styled.span`
+const Icon = styled.span`
   font-size: 18px;
   color: black;
 `;
@@ -38,7 +38,7 @@ class GroceryForm extends Component {
                 <RowMarginBottom>
                     <InputText onChange={handleChange} value={courseTitle} />
                     <ButtonSubmit type="submit">
-                        <IconAdd className="material-icons">add</IconAdd>
+                        <Icon className="material-icons">add</Icon>
                     </ButtonSubmit>
                 </RowMarginBottom>
             </form>
