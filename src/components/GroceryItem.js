@@ -37,21 +37,21 @@ const Icon = styled.span`
 
 class GroceryItem extends Component {
   render() {
-    const { dispatch, id, title, editing } = this.props;
+    const { dispatch, course } = this.props;
     return (
       <ItemCard>
         <Row>
           <Half>
-            <span>{title}</span>
+            <span>{course.title}</span>
           </Half>
           <Half>
             <Button
-              onClick={() => dispatch(courseActions.deleteCourse(id))}
+              onClick={() => dispatch(courseActions.deleteCourse(course.id))}
             >
               <Icon className="material-icons">delete</Icon>
             </Button>
             <Button
-                onClick={() => dispatch(courseActions.editCourse(id, editing))}
+                onClick={() => dispatch(courseActions.editCourse(course.id))}
             >
               <Icon className="material-icons">edit</Icon>
             </Button>

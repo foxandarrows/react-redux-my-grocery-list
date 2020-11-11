@@ -16,6 +16,7 @@ export function deleteCourse(index) {
 }
 
 export function editCourse(index, editing) {
+  console.log('editCourse index', index);
   return {
     type: EDIT_COURSE,
     index,
@@ -26,6 +27,7 @@ export function editCourse(index, editing) {
 // *** WIP
 
 export function updateCourse(index, course) {
+  console.log('updateCourse index', index);
   return {
     type: UPDATE_COURSE,
     index,

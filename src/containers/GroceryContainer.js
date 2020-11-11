@@ -25,7 +25,7 @@ class GroceryContainer extends Component {
         id: 0,
         title: "",
         editing: false,
-      }
+      },
     };
   }
 
@@ -42,15 +42,9 @@ class GroceryContainer extends Component {
           course: {
             id: this.state.course.id + 1,
             title: "",
-            editing: ""
           }
         });
     }
-  };
-
-  handleEditSubmit = e => {
-    e.preventDefault()
-    this.props.dispatch(courseActions.updateCourse(this.state.course));
   };
 
   render() {
@@ -61,13 +55,18 @@ class GroceryContainer extends Component {
           <GroceryForm
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
-            handleEditSubmit={this.handleEditSubmit}
             courseTitle={this.state.course.title}
           />
           {courses.map((course, index) => (
               course.editing
-                  ? <GroceryEditForm key={index} id={course.id} title={course.title} editing={course.editing} /> // Form to update
-                  : <GroceryItem key={index} id={course.id} title={course.title} editing={course.editing} />
+                  ? <GroceryEditForm
+                      key={`edit-${index}`}
+                      course={course}
+                  /> // Form to update
+                  : <GroceryItem
+                      key={`item-${index}`}
+                      course={course}
+                  />
               ))}
         </GroceryCard>
       </Row>

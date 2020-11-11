@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 import * as courseActions from "../redux/actions/courseActions";
+import PropTypes from "prop-types";
 
 // Make a common file for this styled-component
 const InputText = styled.input.attrs({
@@ -14,6 +16,7 @@ const InputText = styled.input.attrs({
 const Row = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 10px;
 `;
 
 const Button = styled.button`
@@ -30,12 +33,31 @@ const Icon = styled.span`
 `;
 
 class GroceryEditForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = props.course
+    }
+
+    handleEditChange = e => {
+        const course = { ...this.state, title: e.target.value };
+        this.setState({ ...course });
+    };
+
+    handleEditSubmit = e => {
+        e.preventDefault()
+        const course = { ...this.course, editing: false };
+        this.setState({ course });
+        console.log('state', this.state)
+        this.props.dispatch(courseActions.updateCourse(this.state.id, this.state));
+    };
+
     render() {
-        const { handleEditSubmit, handleChange, courseTitle } = this.props;
+        const { title } = this.state;
+        console.log(title)
         return (
-            <form onSubmit={handleEditSubmit}>
+            <form onSubmit={this.handleEditSubmit}>
                 <Row>
-                    <InputText onChange={handleChange} value={courseTitle} />
+                    <InputText onChange={this.handleEditChange} value={title} />
                     <Button type="submit">
                         <Icon className="material-icons">save</Icon>
                     </Button>
@@ -45,4 +67,9 @@ class GroceryEditForm extends Component {
     }
 }
 
-export default GroceryEditForm;
+GroceryEditForm.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    course: PropTypes.object.isRequired
+};
+
+export default connect()(GroceryEditForm);
