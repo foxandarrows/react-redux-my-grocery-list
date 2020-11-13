@@ -8,10 +8,10 @@ export function createItem(item) {
   };
 }
 
-export function deleteItem(item) {
+export function deleteItem(index) {
   return {
     type: DELETE_ITEM,
-    item
+    index
   };
 }
 
