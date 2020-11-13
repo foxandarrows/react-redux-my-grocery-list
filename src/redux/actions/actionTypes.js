@@ -1,5 +1,5 @@
 // Action Types
-export const CREATE_COURSE = "CREATE_COURSE";
-export const DELETE_COURSE = "DELETE_COURSE";
-export const EDIT_COURSE = "EDIT_COURSE";
-export const UPDATE_COURSE = "UPDATE_COURSE";
+export const CREATE_ITEM = "CREATE_ITEM";
+export const DELETE_ITEM = "DELETE_ITEM";
+export const EDIT_ITEM = "EDIT_ITEM";
+export const UPDATE_ITEM = "UPDATE_ITEM";

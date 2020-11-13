@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as courseActions from "../redux/actions/courseActions";
+import * as itemActions from "../redux/actions/groceryActions";
 import PropTypes from "prop-types";
 import GroceryForm from "../components/GroceryForm";
 import GroceryItem from "../components/GroceryItem";
@@ -21,7 +21,7 @@ class GroceryContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      course: {
+      item: {
         id: 0,
         title: "",
         editing: false,
@@ -30,17 +30,17 @@ class GroceryContainer extends Component {
   }
 
   handleChange = e => {
-    const course = { ...this.state.course, title: e.target.value };
-    this.setState({ course });
+    const item = { ...this.state.item, title: e.target.value };
+    this.setState({ item });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.course.title !== "") {
-        this.props.dispatch(courseActions.createCourse(this.state.course));
+    if (this.state.item.title !== "") {
+        this.props.dispatch(itemActions.createItem(this.state.item));
         this.setState({
-          course: {
-            id: this.state.course.id + 1,
+          item: {
+            id: this.state.item.id + 1,
             title: "",
           }
         });
@@ -48,24 +48,24 @@ class GroceryContainer extends Component {
   };
 
   render() {
-    const { courses } = this.props;
+    const { grocery } = this.props;
     return (
       <Row>
         <GroceryCard>
           <GroceryForm
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
-            courseTitle={this.state.course.title}
+            itemTitle={this.state.item.title}
           />
-          {courses.map((course, index) => (
-              course.editing
+          {grocery.map((item, index) => (
+              item.editing
                   ? <GroceryEditForm
                       key={`edit-${index}`}
-                      course={course}
+                      item={item}
                   /> // Form to update
                   : <GroceryItem
                       key={`item-${index}`}
-                      course={course}
+                      item={item}
                   />
               ))}
         </GroceryCard>
@@ -76,12 +76,12 @@ class GroceryContainer extends Component {
 
 GroceryContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  courses: PropTypes.array.isRequired
+  grocery: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
   return {
-    courses: state.courses
+    grocery: state.grocery
   };
 }
 

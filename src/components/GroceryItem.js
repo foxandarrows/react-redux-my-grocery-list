@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import * as courseActions from "../redux/actions/courseActions";
+import * as itemActions from "../redux/actions/groceryActions";
 
 // *** Make a common file for these styled-components
 const Row = styled.div`
@@ -37,21 +37,21 @@ const Icon = styled.span`
 
 class GroceryItem extends Component {
   render() {
-    const { dispatch, course } = this.props;
+    const { dispatch, item } = this.props;
     return (
       <ItemCard>
         <Row>
           <Half>
-            <span>{course.title}</span>
+            <span>{item.title}</span>
           </Half>
           <Half>
             <Button
-              onClick={() => dispatch(courseActions.deleteCourse(course.id))}
+              onClick={() => dispatch(itemActions.deleteItem(item.id))}
             >
               <Icon className="material-icons">delete</Icon>
             </Button>
             <Button
-                onClick={() => dispatch(courseActions.editCourse(course.id))}
+                onClick={() => dispatch(itemActions.editItem(item.id))}
             >
               <Icon className="material-icons">edit</Icon>
             </Button>

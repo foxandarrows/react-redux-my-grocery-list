@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import * as courseActions from "../redux/actions/courseActions";
+import * as itemActions from "../redux/actions/groceryActions";
 import PropTypes from "prop-types";
 
 // Make a common file for this styled-component
@@ -35,25 +35,23 @@ const Icon = styled.span`
 class GroceryEditForm extends Component {
     constructor(props) {
         super(props);
-        this.state = props.course
+        this.state = props.item
     }
 
     handleEditChange = e => {
-        const course = { ...this.state, title: e.target.value };
-        this.setState({ ...course });
+        const item = { ...this.state, title: e.target.value };
+        this.setState({ ...item });
     };
 
     handleEditSubmit = e => {
         e.preventDefault()
-        const course = { ...this.course, editing: false };
-        this.setState({ course });
-        console.log('state', this.state)
-        this.props.dispatch(courseActions.updateCourse(this.state.id, this.state));
+        const item = { ...this.item, editing: false };
+        this.setState({ item });
+        this.props.dispatch(itemActions.updateItem(this.state.id, this.state));
     };
 
     render() {
         const { title } = this.state;
-        console.log(title)
         return (
             <form onSubmit={this.handleEditSubmit}>
                 <Row>
@@ -69,7 +67,7 @@ class GroceryEditForm extends Component {
 
 GroceryEditForm.propTypes = {
     dispatch: PropTypes.func.isRequired,
-    course: PropTypes.object.isRequired
+    item: PropTypes.object.isRequired
 };
 
 export default connect()(GroceryEditForm);

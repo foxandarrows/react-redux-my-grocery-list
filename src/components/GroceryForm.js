@@ -31,12 +31,12 @@ const Icon = styled.span`
 
 class GroceryForm extends Component {
     render() {
-        const { handleSubmit, handleChange, courseTitle } = this.props;
+        const { handleSubmit, handleChange, itemTitle } = this.props;
         return (
             <form onSubmit={handleSubmit}>
                 <h2>My Grocery List</h2>
                 <RowMarginBottom>
-                    <InputText onChange={handleChange} value={courseTitle} />
+                    <InputText onChange={handleChange} value={itemTitle} />
                     <ButtonSubmit type="submit">
                         <Icon className="material-icons">add</Icon>
                     </ButtonSubmit>
