@@ -39,7 +39,7 @@ class GroceryEditForm extends Component {
     }
 
     handleEditChange = e => {
-        const item = { ...this.state, title: e.target.value };
+        const item = { ...this.state, title: e.target.value }; // un niveau plus bas car props
         this.setState({ ...item });
     };
 
