@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import * as itemActions from "../redux/actions/groceryActions";
-import PropTypes from "prop-types";
 import GroceryForm from "../components/GroceryForm";
 import GroceryItem from "../components/GroceryItem";
 import GroceryEditForm from "../components/GroceryEditForm";
@@ -17,72 +16,53 @@ const GroceryCard = styled.div`
   margin: 10px;
 `;
 
-class GroceryContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      item: {
-        id: 0,
-        title: "",
-        editing: false,
-      },
-    };
-  }
+const GroceryContainer = () => {
+  const [item, setItem] = useState({
+    id: 0,
+    title: "",
+    editing: false,
+  });
+  const grocery = useSelector( state => state.grocery );
+  const dispatch = useDispatch();
 
-  handleChange = e => {
-    const item = { ...this.state.item, title: e.target.value };
-    this.setState({ item });
+  const handleChange = e => {
+    const changeItem = { ...item, title: e.target.value };
+    setItem(changeItem);
   };
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    if (this.state.item.title !== "") {
-        this.props.dispatch(itemActions.createItem(this.state.item));
-        this.setState({
-          item: {
-            id: this.state.item.id + 1,
-            title: "",
-          }
-        });
+    if (item.title !== "") {
+        dispatch(itemActions.createItem(item));
+        setItem({
+              id: item.id + 1,
+              title: ""
+        })
     }
   };
 
-  render() {
-    const { grocery } = this.props;
-    return (
-      <Row>
-        <GroceryCard>
-          <GroceryForm
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            itemTitle={this.state.item.title}
-          />
-          {grocery.map((item, index) => (
-              item.editing
-                  ? <GroceryEditForm
-                      key={`edit-${index}`}
-                      item={item}
-                  /> // Form to update
-                  : <GroceryItem
-                      key={`item-${index}`}
-                      item={item}
-                  />
-              ))}
-        </GroceryCard>
-      </Row>
-    );
-  }
+  return (
+    <Row>
+      <GroceryCard>
+        <GroceryForm
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          itemTitle={item.title}
+        />
+        {grocery.map((item, index) => (
+            item.editing
+                ? <GroceryEditForm
+                    key={`edit-${index}`}
+                    item={item}
+                /> // Form to update
+                : <GroceryItem
+                    key={`item-${index}`}
+                    item={item}
+                />
+            ))}
+      </GroceryCard>
+    </Row>
+  );
 }
 
-GroceryContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  grocery: PropTypes.array.isRequired
-};
-
-function mapStateToProps(state) {
-  return {
-    grocery: state.grocery
-  };
-}
-
-export default connect(mapStateToProps)(GroceryContainer);
+export default GroceryContainer;
